@@ -1,5 +1,10 @@
 FROM jupyter/datascience-notebook
 
-RUN pip install backtrader qgrid && jupyter nbextension enable --py --sys-prefix qgrid
+RUN conda install qgrid \
+    && jupyter nbextension enable --py --sys-prefix qgrid \
+    && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager \
+    && jupyter labextension install qgrid \
+    && conda clean -afy
 
-
+RUN pip install backtrader[plotting]
