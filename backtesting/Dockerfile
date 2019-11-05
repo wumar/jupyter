@@ -8,3 +8,5 @@ RUN conda install qgrid \
     && conda clean -afy
 
 RUN pip install backtrader[plotting]
+
+COPY jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
